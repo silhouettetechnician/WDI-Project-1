@@ -1,3 +1,70 @@
 body{
-  background: red;
+  background: white;
+  margin: 0 auto;
+  text-align: center;
+
 }
+
+
+.game-container{
+  position: absolute;
+  background-image: url('../images/black.png');
+  width: 1000px;
+  height: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cell{
+  margin: 0 auto;
+  /* width: 48px;
+  height: 48px; */
+  display: inline-block;
+  background: green;
+}
+
+.good-guy{
+  background-image: url('../images/hero.png');
+  position: relative;
+  display: inline-block;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+  animation: slide 2s linear;
+}
+
+.bad-guy{
+ /* width: 50px;
+ height: 50px; */
+ width: 30px;
+ height: 30px;
+ display: inline-block;
+  background-image: url('../images/invader.png');
+  background-size: cover;
+
+}
+
+.bullet{
+  background-image: (url('../images/laserBlue01/');)
+}
+
+.unhidden{
+  visibility: hidden;
+}
+
+/* @keyframes slide {
+  0% {
+    top: 0;
+    left: 0;
+  }
+
+  50% {
+    top: 50%;
+    left: 50%;
+  }
+
+  100% {
+    top: -30%;
+    left: 80%;
+  }
+} */
