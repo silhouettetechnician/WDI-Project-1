@@ -2,6 +2,7 @@ body{
   background: white;
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
 
 }
 
@@ -15,29 +16,37 @@ body{
   text-align: center;
 }
 
-.cell{
-  margin: 0 auto;
-  /* width: 48px;
-  height: 48px; */
-  display: inline-block;
-  background: green;
+.potato {
+  background-color: red;
 }
 
-.good-guy{
-  background-image: url('../images/hero.png');
-  position: relative;
+.cell{
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
   display: inline-block;
+  margin-top: 5px;
+  /* visibility: hidden; */
+}
+
+.goodGuy{
+    background-image: url('../images/hero.png');
+    position: relative;
+    display: inline-block;
     background-size: cover;
     width: 30px;
     height: 30px;
-  animation: slide 2s linear;
+    /* background-color: red;
+    width: 30px;
+    height: 30px; */
+  /* animation: slide 2s linear; */
 }
 
-.bad-guy{
+.badGuy{
  /* width: 50px;
  height: 50px; */
  width: 30px;
- height: 30px;
+ height: 30px;e
  display: inline-block;
   background-image: url('../images/invader.png');
   background-size: cover;
@@ -46,6 +55,10 @@ body{
 
 .bullet{
   background-image: (url('../images/laserBlue01/');)
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-size: cover;
 }
 
 .unhidden{
