@@ -57,6 +57,7 @@ $(() => {
           position: []
         }
       })
+      $(window).on('keydown', function(e){
         const bullet = new Bullet(index, 'up')
         if (e.keyCode === spaceBar){
           shootAudio.play('Sounds/shoot.wav')
@@ -65,10 +66,10 @@ $(() => {
           // } else {
           //   this.index = this.index + 20
           // }
-          bullets.position.push(bulletPosition)
+          // bullets.position.push(bulletPosition)
 
         }
-      }
+      })
 
 
 
