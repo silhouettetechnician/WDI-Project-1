@@ -14,7 +14,7 @@ $(() => {
   let direction = 1
   let movementId = null
   var shootAudio = new Audio('Sounds/shoot.wav')
-
+  const invaderExplosion = new Audio('Sounds/invaderkilled.wav')
   function init(){
 
     const spawnGood = () => {
@@ -46,33 +46,6 @@ $(() => {
       } else if (i > 105 && i < 124 && i%2){
         baddieArray.push(new Baddie(i, 20))
       }
-
-      // *******************************BULLET LOADING INTO CANNON**************************************
-
-      $(window).on('keydown', function(e){
-        const bulletStart = cellArray[511]
-        const bulletPosition = playerIndex
-        bulletStart.addClass('bullet')
-        const bullets = {
-          position: []
-        }
-      })
-      $(window).on('keydown', function(e){
-        const bullet = new Bullet(index, 'up')
-        if (e.keyCode === spaceBar){
-          shootAudio.play('Sounds/shoot.wav')
-          // if (bullet.direction === 'up') {
-          //   bullet.index = bullet.index - 20 && bullet.addClass('bullet')
-          // } else {
-          //   this.index = this.index + 20
-          // }
-          // bullets.position.push(bulletPosition)
-
-        }
-      })
-
-
-
     }
   }
 
@@ -113,28 +86,57 @@ $(() => {
   }
   // if baddieArray.forEach(baddie => baddie.baddieMove())
 
-
+  let bullet
 
   class Bullet {
     constructor(direction, index){
       this.direction = direction
-      this.index = index
+      this.index = index - 33
       this.currentMoves = 0
+      this.bulletTimer = null
+      this.render()
+      this.moveBullet()
     }
 
-    // $(window).on('keydown', function(e){
-    //   const bullet = new Bullet(index, 'up')
-    //   if (e.keyCode === spaceBar){
-    //     shootAudio.play('Sounds/shoot.wav')
-    //     if (this.direction === 'up') {
-    //       this.index = this.index - 20 && bullet.addClass('bullet')
-    //     } else {
-    //       this.index = this.index + 20
-    //     }
-    //     bullets.position.push(bulletPosition)
-    //   }
-    // })
+    render() {
+      cellArray[this.index].addClass('bullet')
+      this.checkHit()
+    }
+
+    remove() {
+      cellArray[this.index].removeClass('bullet')
+    }
+
+    checkHit() {
+      if (cellArray[this.index].hasClass('badGuy')) {
+        cellArray[this.index].removeClass('badGuy')
+        const hitAlien = baddieArray.find(baddie => baddie.currentIndex  ===  this.index)
+        hitAlien.isHit = true
+        invaderExplosion.play('Sounds/invaderkilled.wav')
+        this.remove()
+        clearInterval(this.bulletTimer)
+      }
+    }
+
+    moveBullet() {
+      this.bulletTimer = setInterval(() => {
+        this.remove()
+        this.index -= 33
+        if (this.index < 0) {
+          clearInterval(this.bulletTimer)
+        } else {
+          this.render()
+        }
+      }, 100)
+    }
   }
+
+  $(window).on('keydown', function(e){
+    if (e.keyCode === spaceBar){
+      bullet = new Bullet('up', playerIndex)
+      shootAudio.play('Sounds/shoot.wav')
+    }
+  })
 
   // this.render()
 
@@ -181,12 +183,10 @@ $(() => {
 
 
     render() {
-      // $gameBoard.eq(this.currentIndex).addClass('badGuy')
-      cellArray[this.currentIndex].addClass('badGuy')
+      if(!this.isHit) {
+        cellArray[this.currentIndex].addClass('badGuy')
+      }
     }
-
-
-
 
     baddieMove() {
       cellArray[this.currentIndex].removeClass('badGuy')
@@ -202,13 +202,14 @@ $(() => {
   function keyPress(){
 
     $(window).on('keydown', function(e){
-      if (e.keyCode === leftKey && playerIndex > [495]) {
+      console.log(e.keyCode, rightKey, playerIndex)
+      if (e.keyCode === leftKey && playerIndex > 528) {
         $(cellArray).eq(playerIndex)[0].removeClass('goodGuy')
         playerIndex--
         $(cellArray).eq(playerIndex)[0].addClass('goodGuy')
       }
 
-      if (e.keyCode === rightKey && playerIndex < [527]) {
+      if (e.keyCode === rightKey && playerIndex < 560) {
         $(cellArray).eq(playerIndex)[0].removeClass('goodGuy')
         playerIndex++
         $(cellArray).eq(playerIndex)[0].addClass('goodGuy')
