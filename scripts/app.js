@@ -7,7 +7,8 @@ $(() => {
   const leftKey = 37
   const spaceBar = 32
   const baddieArray = []
-  let playerIndex = 511
+  let playerIndex = 544
+
   const $gameBoard = $('.game-container')
   const cellArray = []
   let direction = 1
@@ -17,11 +18,13 @@ $(() => {
   function init(){
 
     const spawnGood = () => {
-      const $startingPoint = cellArray[511].addClass('goodGuy')
+
+      const $startingPoint = cellArray[544].addClass('goodGuy')
 
     }
     startsGrid()
     spawnGood()
+
   }
 
 
@@ -32,23 +35,49 @@ $(() => {
       $div.attr( 'id', i)
       cellArray.push($div)
       $gameBoard.append($div)
-      console.log($div)
+
 
       if(i > 6 && i < 25 && i%2) {
         baddieArray.push(new Baddie(i, 20))
       } else if (i > 39 && i < 58 && i%2){
         baddieArray.push(new Baddie(i, 20))
-      } else if (i > 72 && i < 91 && i%2) {
+      } else if (i > 72 && i < 91 && i%2){
         baddieArray.push(new Baddie(i, 20))
-      } else if (i > 105 && i < 124 && i%2) {
+      } else if (i > 105 && i < 124 && i%2){
         baddieArray.push(new Baddie(i, 20))
+      }
+
+      // *******************************BULLET LOADING INTO CANNON**************************************
+
+      $(window).on('keydown', function(e){
+        const bulletStart = cellArray[511]
+        const bulletPosition = playerIndex
+        bulletStart.addClass('bullet')
+        const bullets = {
+          position: []
+        }
+      })
+        const bullet = new Bullet(index, 'up')
+        if (e.keyCode === spaceBar){
+          shootAudio.play('Sounds/shoot.wav')
+          // if (bullet.direction === 'up') {
+          //   bullet.index = bullet.index - 20 && bullet.addClass('bullet')
+          // } else {
+          //   this.index = this.index + 20
+          // }
+          bullets.position.push(bulletPosition)
+
+        }
       }
 
 
 
     }
-    console.log(baddieArray,'baddy array')
   }
+
+
+
+
 
   baddieArray.forEach(baddie => baddie.render())
 
@@ -59,18 +88,78 @@ $(() => {
       if(baddieArray.find(baddie => baddie.currentIndex % 33 === 32) && direction === 1) {
         direction = 33
       }
-      if(direction === 66) direction = 1
-      if(baddieArray.find(baddie => baddie.currentIndex % 67 === 33) && direction === -1) {
-        direction = 66
-      }
 
-      // if (baddieArray.find(baddie => baddie.currentIndex >= 495 && baddieArray.find(baddie => baddie.currentIndex <= 527)){
+      if(direction === 66) direction = 1
+      if(baddieArray.find(baddie => baddie.currentIndex % 66 === 33) && direction === -1) {
+        direction = 66
+
+
+      }
+      // console.log(direction)
+
+
+      // if (baddieArray.find(baddie => baddie.currentIndex >= 495) && baddieArray.find(baddie => baddie.currentIndex =< 527){
+      //   clearInterval(movementId)
       //   console.log('you lost')
+      // }
+
+      // if
+
+
+
+
+    }  , 2000)
+  }
+  // if baddieArray.forEach(baddie => baddie.baddieMove())
+
+
+
+  class Bullet {
+    constructor(direction, index){
+      this.direction = direction
+      this.index = index
+      this.currentMoves = 0
     }
 
-    , 1000)
+    // $(window).on('keydown', function(e){
+    //   const bullet = new Bullet(index, 'up')
+    //   if (e.keyCode === spaceBar){
+    //     shootAudio.play('Sounds/shoot.wav')
+    //     if (this.direction === 'up') {
+    //       this.index = this.index - 20 && bullet.addClass('bullet')
+    //     } else {
+    //       this.index = this.index + 20
+    //     }
+    //     bullets.position.push(bulletPosition)
+    //   }
+    // })
   }
 
+  // this.render()
+
+  //
+  //   }
+  //
+  // }
+  // $(window).on('keydown', function(e){
+  // const bullet = {
+  //   position: []
+  // }
+
+
+
+  // const bulletIndex = playerIndex
+  // if (e.keyCode === spaceBar) {
+  // $gameBoard.find('cell').eq(playerIndex).addClass('.bullet')
+
+
+  // (cellArray)[421].addClass('bullet')
+  // cellArray[bulletIndex].classList.add('bullet')
+  // bullet.position.push(bulletIndex)
+  // shootAudio.play('Sounds/shoot.wav')
+
+  //   }
+  // )
 
 
 
@@ -100,24 +189,7 @@ $(() => {
 
     baddieMove() {
       cellArray[this.currentIndex].removeClass('badGuy')
-
       this.currentIndex += direction
-      // const cell = $('.cell')
-      // console.log(cell)
-
-      // for(let i = 0; i < cell.length; i++) {
-      //   if(cell[i] === 32 || cell[i] === 65) {
-      //     console.log('here')
-      //
-      // //   }
-      // // }
-      // if(currentIndex === 266) {
-      //   !playerCurrentIndex++
-      // }
-      // if(playerCurrentIndex === 284) {
-      //   !playerCurrentIndex--
-      // }
-
       this.render()
     }
   }
@@ -133,7 +205,6 @@ $(() => {
         $(cellArray).eq(playerIndex)[0].removeClass('goodGuy')
         playerIndex--
         $(cellArray).eq(playerIndex)[0].addClass('goodGuy')
-
       }
 
       if (e.keyCode === rightKey && playerIndex < [527]) {
@@ -142,46 +213,33 @@ $(() => {
         $(cellArray).eq(playerIndex)[0].addClass('goodGuy')
       }
     })
-
-    $(window).on('keydown', function(e){
-
-      // const bulletIndex = (playerIndex - 30)
-      if (e.keyCode === spaceBar) {
-        shootAudio.play('Sounds/shoot.wav')
-
-        // const bullet = new Bullet(bulletIndex, 'up')
-        // $bullet.position.push(bullets)
-      }
-    })
-
   }
 
-  function shootBullet(){
-    var bulletDraw = playerIndex
-    $(cellArray).eq(bulletDraw).addClass('bullet')
-  }
-  shootBullet()
 
 
+  //   //     if (e.keyCode === $spaceBar) {
+  //   //       console.log('firing')
+  //   //       $gameBoard.find('.cell').eq(playerIndex).addClass('.bullet')
+  //   //
+  //   //
+  //   //       bullet.push(bullets)
+  //   //
   // function animate() {
   //   requestAnimationFrame(animate)
   //   keyPress()
   //   moveBaddies()
   // }
   // animate()
-  //laser
-  // const lasers = []
-  //
-  // class  Laser {
-  //   constructor(index, direction) {
-  //     this.index = index
-  //     this.direction = direction
-  //   }
-  // }
+
 
   init()
   keyPress()
   moveBaddies()
+
+  // startBtn.click(() => {
+  //   startsGrid()
+  //   startGame
+  // })
 
 
 
