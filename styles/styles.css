@@ -1,11 +1,9 @@
 body{
-  background: white;
-  margin: 0 auto;
+
+  background: url('Video/Galaxy_With_Customization.mp4')
   text-align: center;
   box-sizing: border-box;
-
 }
-
 
 .game-container{
   position: absolute;
@@ -14,10 +12,6 @@ body{
   height: 650px;
   margin: 0 auto;
   text-align: center;
-}
-
-.potato {
-  background-color: red;
 }
 
 .cell{
@@ -54,7 +48,7 @@ body{
 }
 
 .bullet{
-  background-image: (url('../images/laserBlue01/');)
+  background-image: (url('images/laserBlue01.png');)
   width: 30px;
   height: 30px;
   display: inline-block;
@@ -63,6 +57,13 @@ body{
 
 .unhidden{
   visibility: hidden;
+}
+
+header > img{
+
+  width: 400px;
+  position: absolute;
+  z-index: 1;
 }
 
 /* @keyframes slide {
