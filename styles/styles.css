@@ -33,7 +33,7 @@ body > div.game-container{
 }
 
 .score{
-  margin-left: 10px;
+  margin-left: 40px;
   position: absolute;
   font-family: arcadeClassic;
   color: white;

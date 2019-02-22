@@ -10,13 +10,13 @@ $(() => {
   let playerIndex = 544
   let alienPoints = 0
   const $score = $('.score-ctn')
-  const $lives = $('.lives')
+  let $lives = $('.lives')
   const $startScreen = $('#startScreen')
   const $gameBoard = $('.game-container')
   const $playbutton = $('.playGame')
   const $button = $('#button')
   const cellArray = []
-  const lives = 3
+  let livesCount = 3
   let direction = 1
   let movementId = null
   var shootAudio = new Audio('Sounds/shoot.wav')
@@ -38,7 +38,7 @@ $(() => {
       // *****************************************SET PLAYER POSITION*************************************
 
       const $startingPoint = cellArray[544].addClass('goodGuy')
-
+      $lives.text(3)
     }
     startsGrid()
     spawnGood()
@@ -49,6 +49,7 @@ $(() => {
   }
   // *****************************************SET UP PLAYING AREA*************************************
 
+function gameOver() {
   function startsGrid(){
     let looopCount = 0
     for(let i = 0; i < Math.floor(height * width); i++) {
@@ -190,11 +191,16 @@ $(() => {
 
     checkLose() {
 
-      this.lives -=
-      this.lives.text($lives)
-      alert('You Lose')
+      livesCount -=
+      livesCount.text($lives)
+
     }
 
+    checkWin(){
+      if ($score  ===  720){
+        alert('you WIN')
+      }
+    }
 
     baddieMove() {
       cellArray[this.currentIndex].removeClass('badGuy')
