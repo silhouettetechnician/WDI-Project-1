@@ -1,19 +1,66 @@
 body{
 
-  /* background: url('Video/Galaxy_With_Customization.mp4'); */
+  background-color: black;
   text-align: center;
   box-sizing: border-box;
+  margin: 0 auto;
 }
-
+body > div.game-container{
+  margin: 0 auto;
+}
 .game-container{
+  left: 220px;
   position: absolute;
-  background-image: url('../images/black.png');
+  background-image: url("https://media.giphy.com/media/lpW86y2SlfhFv6KZH9/giphy.gif");
+  background-size: cover;
   width: 1000px;
   height: 650px;
-  margin: 0 auto;
   text-align: center;
+  box-shadow: 0 1px 32px white;
+  top: 30px;
 }
 
+.game-container .playGame h1 span{
+
+  font-family: arcadeClassic;
+  position: absolute;
+  cursor: pointer;
+  left: 295px;
+  color: black;
+  font-size: 58px;
+  /* z-index: 15; */
+  display: block;
+}
+
+.score{
+  margin-left: 10px;
+  position: absolute;
+  font-family: arcadeClassic;
+  color: white;
+}
+
+.welcome{
+  background-image: url("https://media.giphy.com/media/nIlgTxY29wJuU/giphy.gif");
+  width: 1000px;
+  height: 650px;
+  position: relative;
+background-size: contain;
+background-repeat: no-repeat;
+visibility: visible;
+  /* background-size: cover; */
+  z-index: 3;
+}
+
+.points p{
+  font-family: arcadeClassic;
+  color: black;
+  font-size: 30px;
+  position:absolute;
+  left: 270px;
+  top: 50px;
+  /* z-index: 15; */
+  display: inlineblock;
+}
 .cell{
   margin: 0 auto;
   width: 30px;
@@ -23,6 +70,23 @@ body{
   /* visibility: hidden; */
 }
 
+#startScreen {
+
+  margin: 0 auto;
+  margin-top: 10px;
+  position: relative;
+  /* z-index: 10; */
+  /* right: 37%;
+  top: 25%; */
+  width: 800px;
+  height: 650px;
+  background-color: black;
+  color: #333;
+  text-align: center;
+  /* border: 8px solid; */
+  border-radius: 10px;
+  box-shadow: 0 1px 32px white;
+}
 .goodGuy{
     background-image: url('../images/hero.png');
     position: relative;
@@ -57,8 +121,19 @@ body{
   background-position: center;
 }
 
+.enemyBullet{
+  width: 9px;
+  height: 20px;
+  background color: white;
+}
+
 .unhidden{
   visibility: hidden;
+}
+
+@font-face {
+  font-family: arcadeClassic;
+  src: url('../fonts/ARCADECLASSIC.TTF');
 }
 
 header > img{
