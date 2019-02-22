@@ -16,6 +16,7 @@ $(() => {
   const $playbutton = $('.playGame')
   const $button = $('#button')
   const cellArray = []
+  const lives = 3
   let direction = 1
   let movementId = null
   var shootAudio = new Audio('Sounds/shoot.wav')
@@ -43,7 +44,7 @@ $(() => {
     spawnGood()
     moveBaddies()
     keyPress()
-    scoreLives()
+
 
   }
   // *****************************************SET UP PLAYING AREA*************************************
@@ -188,7 +189,10 @@ $(() => {
     }
 
     checkLose() {
-      console.log('you lost')
+    
+      lives -1
+      lives.text($lives)
+      alert('You Lose')
     }
 
 
