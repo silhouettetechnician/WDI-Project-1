@@ -189,9 +189,9 @@ $(() => {
     }
 
     checkLose() {
-    
-      lives -1
-      lives.text($lives)
+
+      this.lives -=
+      this.lives.text($lives)
       alert('You Lose')
     }
 
