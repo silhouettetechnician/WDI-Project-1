@@ -26,12 +26,12 @@ $(() => {
   $($button).on('click', () => {
     if ($startScreen.hasClass('hidden'))
       $startScreen.css({
-        display: 'none'
+        'display': 'none'
       })
     init()
   })
 
-  function init(){
+  function init() {
 
     const spawnGood = () => {
 
@@ -49,7 +49,7 @@ $(() => {
   }
   // *****************************************SET UP PLAYING AREA*************************************
 
-function gameOver() {
+
   function startsGrid(){
     let looopCount = 0
     for(let i = 0; i < Math.floor(height * width); i++) {
@@ -70,7 +70,6 @@ function gameOver() {
         baddieArray.push(new Baddie(i, 20))
       }
     }
-    console.log(looopCount)
   }
 
   // *****************************************MOVE ENEMIES*************************************
@@ -162,7 +161,7 @@ function gameOver() {
 
   $(window).on('keydown', function(e){
     if (e.keyCode === spaceBar){
-      bullet = new Bullet('up', playerIndex)
+      const bullet = new Bullet('up', playerIndex)
       shootAudio.play('Sounds/shoot.wav')
     }
   })

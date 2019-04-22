@@ -60,6 +60,7 @@ visibility: visible;
   top: 50px;
   /* z-index: 15; */
   display: inlineblock;
+  animation-name: rubberBand;
 }
 .cell{
   margin: 0 auto;
@@ -75,7 +76,7 @@ visibility: visible;
   margin: 0 auto;
   margin-top: 10px;
   position: relative;
-  /* z-index: 10; */
+  z-index: 100000;
   /* right: 37%;
   top: 25%; */
   width: 800px;
@@ -110,6 +111,14 @@ visibility: visible;
   background-size: cover;
 
 }
+#button{
+color: black;
+}
+
+#button.hover{
+  color: white;
+  box-shadow: 0 1px 32px white;
+}
 
 .bullet{
   background-image: url('../images/laserBlue01.png');
@@ -135,27 +144,46 @@ visibility: visible;
   font-family: arcadeClassic;
   src: url('../fonts/ARCADECLASSIC.TTF');
 }
-
+..
 header > img{
 
   width: 400px;
   position: absolute;
   z-index: 1;
 }
+@keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 
-/* @keyframes slide {
-  0% {
-    top: 0;
-    left: 0;
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
   }
 
   50% {
-    top: 50%;
-    left: 50%;
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
   }
 
-  100% {
-    top: -30%;
-    left: 80%;
+  65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1);
   }
-} */
+
+  75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}

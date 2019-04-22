@@ -1,0 +1,114 @@
+Were are guns build a form, taken a token from it and use that token to edit any cheese and make the form work. To do this we need to build a few more components
+
+Make folder called lib for library -> inside of this a new file called auth.js.
+
+Lib is where helpers live but doesn’t belong with the rest of the components. Like the auth class.
+
+Here we cont need to import anything
+
+If we attach static to both methods, it statically attaches the function to the class. Meaning we don’t have to make a bunch of objects we wont use anymore
+
+Registering users
+
+At this point on the cheese bored, the components are getting quite big. So we can separate these further, bu sub categorising them.
+
+To do this we just make two more folders in components
+- make new auth.js and move it to lib folder
+
+-make new register.js and move to auth folders
+
+-make a new link to navbar and show path
+
+-make the route to the new register path and add the register components
+
+-create the form for a new register
+
+- event handler needs binding
+
+- build a data object
+
+- dont put logic in set state, make a variable and add setState as the variable.
+
+we attached the on click function to the form, the temptation is to add an onclick to the button.
+
+we need to make a post request as we are submitting data and put a prevent default to prevent the  page from reloading using axios
+
+as an arguement for the axios post request we send an obkect in this case its data from state
+
+i dont need a response in the component did mount section
+
+binding an event handler in react allows you to use this
+
+we make a new log in component in Auth to get and set tokens
+
+so we link the log in form and set up a route to it. this way we can use the this.setState
+
+then we start building our log in page.
+
+in the then request after axios.post, we respond the auth. settoken with the result being data and then token from the url request axios.
+
+on your axios request when you pass it through what you should be passing it, make sure you are passing login and not register
+
+for the other get requests ie to bnuild your own cheese and then to edit the cheese is the same form, so we'll just make one.
+
+ for the form, we need a handle change, a handle submit and data from  either an axios request. so we pass these into the arguements for the functional component in cheesesform
+
+ we either pass nothing or something into the value form so we use data.name || and empty string
+
+ we have to send three things with this post request, the authorisation
+
+ params is anything adter the first slash, in the compounentdid mount in cheeseedit, we add the id to get the specific cheese we want to edit.
+
+in our Auth page, we use logOut to remove the token which will log out the user. this is by Local storage
+
+get payload tries to get token if theres not one it will return false, if there is it will split it by dot
+
+we run JSON parse on it that turns it back  into JS.
+
+atob turns it into something iseful.
+
+we turn that payload into the is authenticated payload, the now is the when the  date  expired using  date.now.
+
+we then see if the time now is less than the payload exp date.
+
+so far the payload is just some information we store  onto the token. this is useful for our navbar.
+
+were now gunna make a new component for our navbar.
+
+withRouter, allows you to take the props  if something is not rendered inside of switch
+
+
+Day 2
+
+the token we stored is a bit smarter than a collection of characters
+
+json.parse changes json into A  js object.
+
+  return Auth.isAuthenticated() && this.state.cheese.user_id === Auth.getPayload().sub
+
+  checks whether you are checking whether the owner made  it, if the user is authenticated and then get payload .sub if true then display the button. get payload returns an object of information.
+
+  Higher order functions are passed higher ordered components.
+
+  -were guna right a secure route, in app, any route i want to secure im guna  use the secure component i right. others i wont secure  ill let a non user access.
+
+i  first destruct the component that will be passed down to it.
+
+i spread the components using rest and  take them  in one big package, i can destruct into one obkect. then  ill return
+
+  if its authenticated, we'll return the props from rout into rest which spreads out the components.
+
+  we spread from rest and we'll spread it onto the route, unless its false then it will redirect us.
+
+  its saying give me the component and spread the rest.
+
+  setting an empty string will remove the warning in the  input form
+
+
+  FLASH MESSAGING
+
+  i want the message to show welcome back. ill put my redirect in. i want so when i log in a message comes in.
+
+  ill build a component to store it andn the other componenet will go and fetch it further down the line,.
+
+  in login we are guna import flash from the directory
