@@ -51,9 +51,9 @@ $(() => {
 
 
   function startsGrid(){
-    let looopCount = 0
+    let loopCount = 0
     for(let i = 0; i < Math.floor(height * width); i++) {
-      looopCount ++
+      loopCount ++
       const $div = $('<div></div>').addClass('cell')
       $div.attr( 'id', i)
       cellArray.push($div)
