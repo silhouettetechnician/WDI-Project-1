@@ -1,7 +1,7 @@
 # WDI-Project-1
 # WDI 1st Project - Space Invaders
 
-![Screenshot](Screenshot 2019-05-06 at 20.20.57.png)
+![Screenshot](screenshot1.png)
 
 In this project we are given the choice between 10 or so games. I chose Space Invaders because it is a game I enjoy playing and would like to know more about how its made.
 
@@ -35,7 +35,7 @@ During this project I worked by myself to build a game which runs through the cl
 * **SCSS**
 * **Animate CSS**
 
-![Screenshot](Screenshot 2019-05-06 at 20.21.10.png)
+![Screenshot](screenshot2.png)
 -
 ## Features
 
